@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <title>單一隨機組合生成器</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 600px;
+            margin: 20px auto;
+            text-align: center;
+            background-color: #f4f4f4;
+        }
+        #combination {
+            background-color: white;
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin-top: 20px;
+            font-size: 24px;
+            min-height: 50px;
+        }
+        button {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>單一隨機組合生成器</h1>
+    <button onclick="generateCombination()">生成組合</button>
+    <div id="combination"></div>
+
+    <script>
+        const scenes = [
+            "浴室裡", "房間裡", "廁所裡", "床上", 
+            "桌上", "客廳裡", "廚房裡", "公司裡"
+        ];
+
+        const descriptors = [
+            "臭臭的", "香香的", "長長的", "短短的", 
+            "扁扁的", "油油的", "濕濕的", "黏黏的", 
+            "澎澎的", "硬硬的"
+        ];
+
+        const conditions = [
+            "實用", "美觀", "好玩", "很廢", "很醜"
+        ];
+
+        function getRandomElement(array) {
+            return array[Math.floor(Math.random() * array.length)];
+        }
+
+        function generateCombination() {
+            const combinationDiv = document.getElementById('combination');
+            
+            const scene = getRandomElement(scenes);
+            const descriptor = getRandomElement(descriptors);
+            const condition = getRandomElement(conditions);
+
+            const combination = `${scene}${descriptor}${condition}的東西`;
+            
+            combinationDiv.textContent = combination;
+        }
+    </script>
+</body>
+</html>
